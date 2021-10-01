@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Mercadinho.Prateleira.Domain
+﻿namespace Mercadinho.Prateleira.Domain
 {
     public class Qualitativo
     {
