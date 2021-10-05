@@ -13,24 +13,24 @@ namespace Mercadinho.Prateleira.Infrastructure.Data.DataMappings
     {
         public void Configure(EntityTypeBuilder<Produto> builder)
         {
-            builder.ToTable("PRODUTO")
-                 .HasOne(n => n.Estoque)
-                 .WithOne(n => n.Produto)
-                 .OnDelete(DeleteBehavior.Cascade)
-                 .HasForeignKey<Estoque>(f => f.ProdutoId);
+            builder.ToTable("PRODUTO")//Nome da tabela
+                 .HasOne(n => n.Estoque)//Tabela de produto pode ter um estoque (Relacionamento)
+                 .WithOne(n => n.Produto)//E o estoque tem um produto
+                 .OnDelete(DeleteBehavior.Cascade)//No caso de deletar um produto, deleta também um estoque
+                 .HasForeignKey<Estoque>(f => f.ProdutoId);//Produto será refernciado por uma FireingKey
 
-            builder.HasMany(n => n.Categorias)
-                .WithMany(n => n.Produtos);
+            builder.HasMany(n => n.Categorias)//Relacionamento será um N pra N com categoria
+                .WithMany(n => n.Produtos);//E a categoria tem uma coleção de produtos
 
             builder.Property(p => p.Id)
-                .HasColumnName("ID")
-                .UseIdentityColumn();
+                .HasColumnName("ID")//Nome da coluna
+                .UseIdentityColumn();//Auto-incremento
 
             builder.Property(p => p.Descricao)
-                .HasColumnName("DESCRICAO")
-                .HasColumnType("varchar")
-                .HasMaxLength(300)
-                .IsRequired();
+                .HasColumnName("DESCRICAO")//Nome da coluna descrição
+                .HasColumnType("varchar")//Tipo da columa
+                .HasMaxLength(300)//Tamanho máximo de 300 caracteres
+                .IsRequired();//De ocorrência obrigatória
 
         }
     }
