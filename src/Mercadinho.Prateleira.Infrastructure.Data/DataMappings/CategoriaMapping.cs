@@ -13,16 +13,16 @@ namespace Mercadinho.Prateleira.Infrastructure.Data.DataMappings
     {
         public void Configure(EntityTypeBuilder<Categoria> builder)
         {
-            builder.ToTable("CATEGORIA");
-            builder.Property(p => p.Id)
+            builder.ToTable("CATEGORIA");//Nome da tabela Categoria
+            builder.Property(p => p.Id)//Tem uma coluna ID
                 .HasColumnName("ID")
-                .UseIdentityColumn();
+                .UseIdentityColumn();//Que é auto-incremento
 
             builder.Property(p => p.Descricao)
-                .HasColumnName("DESCRICAO")
-                .HasColumnType("varchar")
-                .HasMaxLength(50)
-                .IsRequired();
+                .HasColumnName("DESCRICAO")//Tem uma coluna Descrição
+                .HasColumnType("varchar")//Do tipo varchar
+                .HasMaxLength(50)//Com 50 caracteres
+                .IsRequired();//De ocorrência obrigatória
         }
     }
 }
