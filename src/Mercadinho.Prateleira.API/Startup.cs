@@ -1,3 +1,4 @@
+using MediatR;
 using Mercadinho.Prateleira.Infrastructure.Data.DataRegistration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,6 +10,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Mercadinho.Prateleira.API
@@ -28,6 +30,8 @@ namespace Mercadinho.Prateleira.API
             //Ignora referências Ciclicas.
             services.AddControllers().AddNewtonsoftJson(opt =>
                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddDataRegistration(_configuration);
 
